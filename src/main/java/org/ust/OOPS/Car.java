@@ -124,7 +124,7 @@ class Main {
         System.out.println();
 
         // Attempt to drive more than fuel allows
-        myCar.drive(1000);
+        myCar.drive(10000);
         System.out.println("Fuel level after driving: " + myCar.getFuelLevel());
     }
 }
