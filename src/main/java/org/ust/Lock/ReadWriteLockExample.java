@@ -57,7 +57,7 @@ public class ReadWriteLockExample {
             for(int i=0;i<10;++i){
                 lockExample.readCounter();
                 try{
-                    Thread.sleep(200);
+                    Thread.sleep(100);
                 }catch (InterruptedException interruptedException){
                     interruptedException.printStackTrace();
                 }
