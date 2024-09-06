@@ -1,5 +1,9 @@
 package org.ust.Multithreading;
 
+/*
+    This code can also be used to monitor mutex properties
+    because mutex properties are already followed by semaphore keyword
+*/
 
 class Counter{
     private int count=0;

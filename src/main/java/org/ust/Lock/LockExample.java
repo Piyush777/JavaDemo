@@ -3,6 +3,10 @@ package org.ust.Lock;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/*
+    Also called as Explicit Mutex because it explicitly follows
+    mutex properties and gives more fine grained control over accesses
+ */
 public class LockExample {
 
     private int counter=0;
