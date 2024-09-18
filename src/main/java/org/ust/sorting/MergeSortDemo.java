@@ -34,6 +34,8 @@ public class MergeSortDemo {
     }
 
     public static void mergeSort(int []arr) {
+
+
         if (Objects.isNull(arr) || arr.length <= 1) {
             return;
         }
@@ -54,8 +56,9 @@ public class MergeSortDemo {
         merge(arr, left, right);
     }
 
+
     public static void main(String[] args) {
-        int[]arr = {38,27,43,3,9,82,10};
+        int[]arr = {3,2,1,5};
         System.out.println("Original ");
         for(int num: arr){
             System.out.println(num);
