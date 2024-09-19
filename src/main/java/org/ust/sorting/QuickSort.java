@@ -31,13 +31,14 @@ public class QuickSort {
             }
         }
 
+        i++;
         // Swap arr[i+1] and arr[high] (or pivot)
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[high];
+        int temp = arr[i];
+        arr[i] = arr[high];
         arr[high] = temp;
-        printArray(arr);
+        //printArray(arr);
 
-        return i + 1;
+        return i ;
     }
 
     // Helper function to print the array
