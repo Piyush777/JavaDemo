@@ -1,5 +1,9 @@
 package org.ust.sorting;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class QuickSort {
 
     // Function to perform Quick Sort
@@ -11,6 +15,9 @@ public class QuickSort {
             // Recursively sort elements before and after partition
             quickSort(arr, low, pivotIndex - 1);
             quickSort(arr, pivotIndex + 1, high);
+
+
+
         }
     }
 
@@ -59,5 +66,17 @@ public class QuickSort {
 
         System.out.println("Sorted Array:");
         printArray(arr);
+
+        System.out.println("Binary Search from Collection");
+        List<Integer> numList = new ArrayList<>();
+        numList.add(30);
+        numList.add(40);
+        numList.add(70);
+        numList.add(1000);
+
+        System.out.println(Collections.binarySearch(numList,70));
+        System.out.println(Collections.binarySearch(numList,170));
+
+
     }
 }
