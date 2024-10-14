@@ -63,4 +63,3 @@ public class CompressionExample {
         compressor.setCompressionStrategy(new RarCompressionStrategy());
         compressor.compressFile("example.txt");
     }
- 
