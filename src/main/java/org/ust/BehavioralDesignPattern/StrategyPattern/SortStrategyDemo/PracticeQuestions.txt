@@ -1,0 +1,66 @@
+Question 1: Text Formatter
+Problem Statement:
+
+You are tasked with creating a text formatting application. The application should be able to format text in different styles, such as plain text, uppercase, and lowercase. Use the Strategy Pattern to implement this functionality.
+
+Requirements:
+
+Define a TextFormatter interface with a method format(String text).
+
+Implement three concrete strategies:
+
+PlainTextFormatter: Returns the text as is.
+
+UpperCaseFormatter: Converts the text to uppercase.
+
+LowerCaseFormatter: Converts the text to lowercase.
+
+Create a TextEditor class that uses a TextFormatter to format text.
+
+Implement a method in TextEditor to set the formatter and another to display the formatted text.
+
+Example Usage:
+
+
+public class TextFormatterExample {
+    public static void main(String[] args) {
+        TextEditor editor = new TextEditor();
+        editor.setFormatter(new PlainTextFormatter());
+        editor.publishText("Hello Strategy Pattern!");
+        editor.setFormatter(new UpperCaseFormatter());
+        editor.publishText("Hello Strategy Pattern!");
+        editor.setFormatter(new LowerCaseFormatter());
+        editor.publishText("Hello Strategy Pattern!");
+    }
+}
+Question 2: Compression Strategy
+Problem Statement:
+
+Design a file compression system that can use different compression algorithms. Use the Strategy Pattern to allow dynamic selection of the compression algorithm.
+
+Requirements:
+
+Define a CompressionStrategy interface with a method compress(String fileName).
+
+Implement two concrete strategies:
+
+ZipCompressionStrategy: Simulate compressing a file using ZIP format.
+
+RarCompressionStrategy: Simulate compressing a file using RAR format.
+
+Create a Compressor class that uses a CompressionStrategy to compress files.
+
+Implement a method in Compressor to set the compression strategy and another to compress a given file.
+
+Example Usage:
+
+
+public class CompressionExample {
+    public static void main(String[] args) {
+        Compressor compressor = new Compressor();
+        compressor.setCompressionStrategy(new ZipCompressionStrategy());
+        compressor.compressFile("example.txt");
+        compressor.setCompressionStrategy(new RarCompressionStrategy());
+        compressor.compressFile("example.txt");
+    }
+ 
