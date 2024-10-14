@@ -14,5 +14,9 @@ public class StrategyPatternDemo {
         //Use Quick Sort
         sorter.setStrategy(new QuickSort());
         sorter.sort(numbers);
+
+        //Using null straegy
+        sorter.setStrategy(null);
+        sorter.sort(numbers);
     }
 }

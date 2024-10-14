@@ -12,6 +12,7 @@ public class PaymentDemo {
         shoppingCart.setPaymentStrategy(new CreditCardPayment("1234-5678-9012-3456"));
         shoppingCart.checkout(200);
 
+        //Another Credit Card Payment
         shoppingCart.setPaymentStrategy(new CreditCardPayment("1234-5678-9012-4122"));
         shoppingCart.checkout(210);
 
