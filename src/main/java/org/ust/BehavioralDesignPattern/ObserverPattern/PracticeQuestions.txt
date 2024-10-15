@@ -1,0 +1,51 @@
+
+
+
+Problem Statement 1: News Agency Subscription System
+Objective: Implement a news agency subscription system where subscribers (observers) receive updates whenever new articles are published by the news agency (subject).
+
+Requirements:
+NewsAgency: This class acts as the subject. It should maintain a list of subscribers and notify them whenever a new article is published.
+
+Subscriber: This interface should define a method for receiving updates, such as update(String article).
+
+ConcreteSubscriber: Implement the Subscriber interface for different types of subscribers (e.g., email subscribers, app subscribers).
+
+Functionality:
+
+Allow subscribers to subscribe and unsubscribe from the news agency.
+
+When a new article is published, all current subscribers should be notified with the article details.
+
+Example Scenario:
+A news agency publishes articles on various topics.
+
+Subscribers can subscribe to receive updates for newly published articles.
+
+When the news agency publishes a new article, all subscribed users receive the article title and content.
+
+(Assume Each article is a String)
+
+Problem Statement 2: Auction System Notification
+Objective: Create an auction system where bidders (observers) are notified of new bids on an item (subject).
+
+Requirements:
+AuctionItem: This class acts as the subject and represents an item up for auction. It should keep track of the current highest bid and notify all bidders when a new highest bid is placed.
+
+Bidder: This interface should define a method for receiving bid updates, such as update(String itemName, double newBid).
+
+ConcreteBidder: Implement the Bidder interface to represent different bidders participating in the auction.
+
+Functionality:
+
+Allow bidders to register and deregister their interest in an auction item.
+
+Notify all registered bidders whenever a new highest bid is placed on the auction item.
+
+Example Scenario:
+An auction is taking place for a rare collectible item.
+
+Bidders can register to receive updates about the highest bid.
+
+When a new highest bid is placed on the item, all registered bidders are notified with the new bid amount.
+ 
