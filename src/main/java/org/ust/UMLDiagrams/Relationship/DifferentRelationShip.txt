@@ -1,0 +1,71 @@
+
+
+Association
+
+
+Represents a general relationship between two classes.
+Indicates that objects of one class are connected to objects of another class.
+Depicted as a solid line between classes.
+Can be one-way or two-way (bidirectional).
+Example: A Student is associated with a Course.
+
+
+Inheritance
+
+
+Represents an "is-a" relationship.
+A child class (subclass) inherits properties and methods from a parent class (superclass).
+Shown as a solid line with a hollow triangle arrow pointing to the parent class.
+Example: A Car is a Vehicle.
+
+
+Aggregation
+
+
+Represents a "has-a" relationship.
+Indicates that one class is a part of another class, but can exist independently.
+Depicted as a solid line with an unfilled diamond on the containing class's end.
+The contained object can exist without the container.
+Example: A Department has Employees, but Employees can exist without a Department.
+
+
+Composition
+
+
+A stronger form of aggregation.
+Represents a "part-of" relationship where the part cannot exist without the whole.
+Shown as a solid line with a filled diamond on the containing class's end.
+The lifetime of the contained object is dependent on the container.
+Example: A House is composed of Rooms. Rooms cannot exist without the House.
+
+
+Dependency
+
+
+Represents a using relationship between classes.
+Indicates that changes in one class may affect another class.
+Depicted as a dashed line with an arrow pointing to the class being depended on.
+Often used when one class uses another as a method parameter or local variable.
+Example: A Printer depends on a Driver.
+
+To illustrate these relationships, let's create a UML diagram that demonstrates all of them:
+UML Class Diagram: Relationship TypesClick to open diagram
+Let's break down the relationships in this diagram:
+
+Inheritance: Car inherits from Vehicle (solid line with hollow triangle).
+Composition: Car is composed of an Engine (solid line with filled diamond).
+Aggregation: Car has Wheels, and Garage has Vehicles (solid line with unfilled diamond).
+Dependency: Driver depends on Car for the drive method (dashed line with arrow).
+Association: Driver is associated with Car (simple solid line).
+
+Key differences to note:
+
+Inheritance implies a hierarchical relationship, while the others are about object composition or usage.
+Composition is a stronger relationship than aggregation. In composition,
+the part (Engine) cannot exist without the whole (Car), while in aggregation, the part (Wheel) can exist independently.
+Association is a general relationship, while aggregation and composition are more specific forms of association.
+Dependency is the weakest relationship, often temporary, and doesn't imply ownership.
+
+Understanding these relationships helps in designing more accurate and meaningful
+object-oriented systems. Each type of relationship conveys important information about
+how classes interact and depend on each other in your system design.

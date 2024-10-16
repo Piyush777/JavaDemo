@@ -1,0 +1,49 @@
+
+
+
+Key Rules for UML Class Diagrams:
+
+Classes are represented by rectangles divided into three sections:
+
+Top section: Class name
+Middle section: Attributes
+Bottom section: Methods
+
+
+Attributes and methods are listed with their visibility:
+
+(+) public
+(-) private
+(#) protected
+
+
+Relationships between classes are shown with different types of lines:
+
+Association: Solid line
+Inheritance: Solid line with a hollow triangle arrow
+Aggregation: Solid line with an unfilled diamond
+Composition: Solid line with a filled diamond
+Dependency: Dashed line with an arrow
+
+
+Multiplicity is indicated near the ends of association lines (e.g., 1, 0..1, , 1..).
+
+Now, let's look at two examples:
+Example 1: Library Management System
+UML Class Diagram: Library Management SystemClick to open diagram
+This diagram shows three classes: Library, Book, and Member.
+
+The Library class has a one-to-many relationship with both Book and Member classes, indicated by the "1" and "*" notations.
+Members can borrow multiple books, and books can be borrowed by multiple members,
+shown by the many-to-many relationship between Member and Book.
+Attributes and methods are listed with their visibility (+ for public, - for private).
+
+Example 2: Online Shopping System
+UML Class Diagram: Online Shopping SystemClick to open diagram
+This diagram illustrates:
+
+A Customer class that can place multiple Orders (one-to-many relationship).
+An Order class that contains multiple Items (composition relationship, shown by the filled diamond).
+A Customer has one ShoppingCart (one-to-one relationship).
+The ShoppingCart can contain multiple Items (one-to-many relationship).
+
