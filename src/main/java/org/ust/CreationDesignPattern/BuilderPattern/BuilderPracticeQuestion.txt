@@ -1,0 +1,20 @@
+Problem Statement: Build a Vacation Package Planner
+You need to design a system to plan and customize vacation packages using the Builder Pattern. A vacation package includes the following customizable options:
+
+Destination (e.g., "Paris", "Tokyo", etc.)
+Hotel (e.g., "5-star", "Budget", etc.)
+Flight (e.g., "Business", "Economy", etc.)
+Activities (Optional, e.g., "Sightseeing", "Scuba Diving", etc.)
+Meals (Optional, e.g., "Breakfast only", "All-inclusive", etc.)
+Create a VacationPackage class with the following attributes:
+
+destination: String
+hotel: String
+flight: String
+activities: Optional List of Strings
+meals: Optional String
+Your task is to:
+
+Implement the VacationPackageBuilder class using the Builder Pattern.
+Allow step-by-step customization of the vacation package.
+Finalize the vacation package using a build() method, which returns the completed VacationPackage.
