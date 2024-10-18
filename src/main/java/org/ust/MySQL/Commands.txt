@@ -1,0 +1,71 @@
+
+SHOW DATABASES;
+
+SHOW TABLES;
+
+CREATE TABLE students(
+
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  age INT,
+  grade VARCHAR(10)
+);
+
+INSERT INTO students(name, age, grade) VALUES('Alice',20,'A');
+
+
+SELECT * FROM students;
+
+
+INSERT INTO students(name, age, grade) VALUES('Bob',21,'B');
+
+INSERT INTO students(name, age, grade) VALUES('Charlie',22,'C');
+
+SELECT * FROM students;
+
+
+SHOW TABLES;
+
+INSERT INTO students(name) VALUES('Derik');
+
+SELECT * FROM students;
+
+
+SELECT name from students;
+
+SELECT age from students;
+
+SELECT name,age from students;
+
+select * from students where age != 21;
+
+select * from students where name is not null;
+
+select * from students where age is not null;
+
+select name,age from students where (age>20) and (grade>='A');
+
+
+Update students
+set grade='A+'
+where name = 'Bob';
+
+select * from students;
+
+
+Update students
+set grade='B-'
+where age<22;
+
+select * from students;
+
+
+
+
+
+
+
+
+
+
+
