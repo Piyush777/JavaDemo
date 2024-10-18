@@ -1,0 +1,38 @@
+
+
+
+
+SQL Database
+    -SQL Tables
+        -Rows and Column
+
+
+
+Payment_db
+    -CreditCardInfo
+    -UPIInfo
+    -PaymentProvider
+
+
+1. Show Databases
+Lists all Databases available on the MySQL server.
+
+
+Person
+    id; int
+    salary:int
+    email:varChar
+
+
+Integer i = Integer.parseInt("20")
+
+
+Lexicographical Sorting
+
+"ABC":m
+"ABE":m
+
+O(m+m)
+O(m)
+
+
