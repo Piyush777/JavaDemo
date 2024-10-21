@@ -1,0 +1,79 @@
+
+
+
+### **Question: Employee Database with Soft Delete Functionality**
+
+---
+
+### **Part 1: Create the `employees` table**
+
+Write a query to create the `employees` table with the following columns:
+- `employee_id` (Primary Key)
+- `first_name`
+- `last_name`
+- `department`
+- `salary`
+- `hire_date`
+- `soft_delete` (boolean with a default value)
+
+---
+
+### **Part 2: Insert employee records**
+
+Insert the following records into the `employees` table:
+
+| employee_id | first_name | last_name | department  | salary  | hire_date  |
+|-------------|------------|-----------|-------------|---------|------------|
+| 1           | John       | Doe       | IT          | 60000.00| 2020-01-15 |
+| 2           | Jane       | Smith     | HR          | 55000.00| 2018-09-23 |
+| 3           | Alice      | Johnson   | IT          | 62000.00| 2019-03-01 |
+| 4           | Bob        | White     | Marketing   | 58000.00| 2021-05-10 |
+| 5           | Charlie    | Brown     | IT          | 61000.00| 2020-11-12 |
+
+---
+
+### **Part 3: Select all active employees**
+
+Write a query to select all employees who are not soft-deleted.
+
+---
+
+### **Part 4: Soft-delete an employee**
+
+Soft-delete the employee with `employee_id = 3`.
+
+---
+
+### **Part 5: Select all employees, including soft-deleted ones**
+
+Write a query to select all employees, regardless of soft-delete status.
+
+---
+
+### **Part 6: Select active employees ordered by salary**
+
+Write a query to select only active employees and order them by salary in descending order.
+
+---
+
+### **Part 7: Update an employee's salary**
+
+Update the salary of the employee with `employee_id = 1` to 65000.
+
+---
+
+### **Part 8: Count active employees**
+
+Write a query to count the number of active employees.
+
+---
+
+### **Part 9: Count employees per department**
+
+Count the number of employees in each department, including both active and soft-deleted employees.
+
+---
+
+### **Part 10: Restore a soft-deleted employee**
+
+Restore the employee with `employee_id = 3` by removing the soft-delete status.
