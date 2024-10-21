@@ -62,6 +62,173 @@ select * from students;
 
 
 
+//All queries from 21 October session
+
+
+
+
+create table students(
+  id INT AUTO_INCREMENT primary key,
+  name varchar(100),
+  age int
+);
+
+insert into students (name, age)
+values ('John Doe', 20),
+       ('Jane Smith', 22);
+
+select * from students;
+
+
+select name from students;
+
+
+select * from students where age>=21 and age<=25;
+
+
+insert into students (name, age)
+values ('John Wick', 25),
+       ('Jane Willow', 23),
+       ('Jin Austin',24);
+
+select name,age from students;
+
+update students
+set age = 21
+where name = 'John Wick';
+
+select * from students;
+
+select * from students where age>21 and name LIKE 'J%';
+
+select * from students where age>=21 and name LIKE '%W%';
+
+
+delete from students
+where name = 'Jin Austin';
+
+select * from students;
+
+
+
+create table students_sd(
+  id INT AUTO_INCREMENT primary key,
+  name varchar(100),
+  age int,
+  is_deleted bool default false
+);
+
+
+insert into students_sd (name, age)
+values ('John Wick', 25),
+       ('Jane Willow', 23),
+       ('Jin Austin',24),
+       ('John Doe', 20);
+
+select * from students_sd where is_deleted !=true;
+
+
+update students_sd
+set is_deleted = true
+where name = 'Jin Austin';
+
+select * from students_sd where is_deleted !=true;
+
+
+select * from students_sd;
+
+update students_sd
+set is_deleted = false
+where name = 'Jin Austin';
+
+select * from students_sd where is_deleted !=true;
+
+
+update students_sd
+set is_deleted = true;
+
+select * from students_sd;
+
+update students_sd
+set is_deleted = false
+where name !='John Doe';
+
+select * from students_sd;
+
+select count(*) from students_sd;
+
+select count(*) from students_sd
+where age > 22;
+
+update students_sd
+set is_deleted = true
+where name ='John Wick';
+
+select * from students_sd;
+
+select count(*) from students_sd
+where age > 22
+and is_deleted=false;
+
+
+select * from students_sd
+order by age asc;
+
+
+select * from students_sd
+order by age desc;
+
+select * from students_sd
+where is_deleted=false
+order by age desc;
+
+
+
+select * from students_sd;
+
+select * from students_sd
+order by age desc
+limit 3;
+
+
+create table students_personal(
+  id INT AUTO_INCREMENT primary key,
+  name varchar(100),
+  phone_No varchar(10)
+);
+
+insert into students_personal (name, phone_No)
+values ('John Wick', '1234567890'),
+       ('Jane Willow', '0987654321'),
+       ('Jin Austin','1234509876'),
+       ('John Doe', '0987612345');
+
+select * from students_personal;
+
+select students_sd.name, students_sd.age, students_personal.phone_No
+from students_sd
+join students_personal on students_sd.name = students_personal.name;
+
+Link to OC:
+https://onecompiler.com/mysql/42vr35vjc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
