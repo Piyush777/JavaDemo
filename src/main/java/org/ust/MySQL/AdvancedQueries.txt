@@ -1,0 +1,45 @@
+
+Links to OC:
+
+
+https://onecompiler.com/mysql/42vue5jp5
+https://onecompiler.com/mysql/42vtygecd
+https://onecompiler.com/mysql/42vwye9q5
+https://onecompiler.com/mysql/42vtvcfsz
+
+
+
+Window Functions
+
+allow to perform calculations across set of tables related to current row
+they retrain the original row structure while providing additional computed column
+(they do not aggregate)
+
+
+
+Key Concepts:
+-Window Specification: window functions operates over a window defined by Over clause
+-Partiotioning: Rows can be partitioned into groups. Functions can be applied to group separately
+-Ordering: within each partition, rows can be ordered using the order by clause
+
+Typical usage: running toals, moving average, cumulative count
+
+
+
+Json Data Types
+allows to store,retrieve and manipulate JSON data directly within your db
+
+json column can store objects and arrays allowing you to store complex data structures withing single db column
+
+Json Functions(More Popular):
+1. Json_extract: Extract data from a json document
+2. json_unquote: removes quotes from a json string
+3. json_set: updates values in json document
+4. json_array/json_object: creates a json array/object
+5. json_contains: checks if a json document contains a specific value
+
+Benfits:
+flexibility
+intergation
+simplicity
+
