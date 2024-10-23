@@ -6,6 +6,7 @@ https://onecompiler.com/mysql/42vue5jp5
 https://onecompiler.com/mysql/42vtygecd
 https://onecompiler.com/mysql/42vwye9q5
 https://onecompiler.com/mysql/42vtvcfsz
+https://onecompiler.com/mysql/42vx2534t
 
 
 
@@ -42,4 +43,35 @@ Benfits:
 flexibility
 intergation
 simplicity
+
+
+
+
+
+
+Transactions
+
+
+Sequence of one or more SQL operations that are executed as a single unit of work
+Ensures either all operations are completed or none of them are applied, mainitaining the integrity of database
+
+accounts
+transactions
+
+
+Alice want to transfer 200 USD
+
+
+1. check if Alice has enough balance
+2. Deduct 200$ from Alice's account
+3. Add 200$ to Bob's account
+4. Record transaction to transaction table
+
+(ACID properties imp)
+
+Atomicity
+Consistency
+Isolation
+Durability
+
 
