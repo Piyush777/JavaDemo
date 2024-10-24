@@ -1,0 +1,60 @@
+
+
+Link to OC:
+https://onecompiler.com/mongodb/42w2296t6
+
+
+Notes:
+
+
+
+
+MongoDB
+
+
+Database
+	Collection: Tables
+		Document
+			Fields
+
+Persons{
+{
+“emptied”:1289
+“empName”:ask
+“Salary”:18291
+}
+{
+“stId”:8129
+“StdName”: ajska
+“Grade”:F
+“emeContact”:12829
+}
+}
+1. Collections
+Collection store multiple documents and each document can have different structures(Mongo-db)
+
+
+
+Account_id account_name balance
+1                   Alice                  1000
+
+{
+Account_id:1,
+account_name: Alice
+balance: 1000
+}
+
+{
+}
+{
+Remarks
+}
+
+
+
+
+Select * from accounts
+Where account_id=1;
+
+
+
