@@ -1,0 +1,180 @@
+1. Subquery
+Problem Statement:
+You have the following table:
+
+Employees
+
+employee_id	employee_name	department_id	salary
+1	John Doe	101	5000
+2	Jane Smith	102	4500
+3	Robert Brown	101	5500
+4	Emily Davis	102	4700
+Write a SQL query to find the names of employees who earn more than the average salary in their department.
+Expected Output:
+
+employee_name
+Robert Brown
+2. LEFT JOIN
+Problem Statement:
+You are given the following two tables:
+
+Customers
+
+customer_id	customer_name
+1	Alice
+2	Bob
+3	Charlie
+Orders
+
+order_id	customer_id	total_amount
+101	1	250
+102	2	150
+Write a SQL query to fetch all customer names along with the total number of orders they have placed. Include customers even if they have no orders.
+Expected Output:
+
+customer_name	total_orders
+Alice	1
+Bob	1
+Charlie	0
+3. RIGHT JOIN
+Problem Statement:
+You are given the following two tables:
+
+Products
+
+product_id	product_name
+1	Laptop
+2	Phone
+Suppliers
+
+supplier_id	product_id	supplier_name
+1	1	Supplier A
+2	NULL	Supplier B
+Write a SQL query to display all supplier names along with the product names they supply. Include suppliers who do not supply any products.
+Expected Output:
+
+supplier_name	product_name
+Supplier A	Laptop
+Supplier B	NULL
+4. INNER JOIN
+Problem Statement:
+You are given the following two tables:
+
+Students
+
+student_id	student_name
+1	Alice
+2	Bob
+Courses
+
+course_id	student_id	course_name
+101	1	Math
+102	1	Science
+103	2	History
+Write a SQL query to fetch the names of all students who are enrolled in courses along with the course names.
+Expected Output:
+
+student_name	course_name
+Alice	Math
+Alice	Science
+Bob	History
+5. Subquery
+Problem Statement:
+You have the following table:
+
+Products
+
+product_id	product_name	price
+1	Laptop	1000
+2	Phone	500
+3	Tablet	300
+Write a SQL query to find the most expensive product. Use a subquery to find the maximum price.
+Expected Output:
+
+product_name	price
+Laptop	1000
+6. LEFT JOIN
+Problem Statement:
+You are given the following two tables:
+
+Books
+
+book_id	title
+1	Book A
+2	Book B
+Authors
+
+author_id	book_id	author_name
+1	1	Author A
+Write a SQL query to fetch all book titles along with their authors' names. Include books even if they do not have an author.
+Expected Output:
+
+title	author_name
+Book A	Author A
+Book B	NULL
+7. RIGHT JOIN
+Problem Statement:
+You are given the following two tables:
+
+Departments
+
+department_id	department_name
+1	HR
+2	IT
+Employees
+
+employee_id	department_id	employee_name
+1	1	John
+Write a SQL query to display all department names along with employee names. Include departments even if they have no employees.
+Expected Output:
+
+department_name	employee_name
+HR	John
+IT	NULL
+8. User-Defined Variable
+Problem Statement:
+You are given the following table:
+
+Sales
+
+sale_id	product_name	quantity
+1	Laptop	2
+2	Phone	5
+3	Tablet	1
+Write a SQL query that uses a user-defined variable to calculate the cumulative quantity of products sold after each sale.
+Expected Output:
+
+sale_id	product_name	quantity	cumulative_quantity
+1	Laptop	2	2
+2	Phone	5	7
+3	Tablet	1	8
+9. View
+Problem Statement:
+You are given the following table:
+
+Orders
+
+order_id	customer_name	total_amount
+1	Alice	200
+2	Bob	150
+3	Charlie	300
+Write a SQL query to create a view that shows only the orders with a total amount greater than 200. Then, select all records from this view.
+Expected Output:
+
+order_id	customer_name	total_amount
+3	Charlie	300
+10. Subquery
+Problem Statement:
+You are given the following table:
+
+Employees
+
+employee_id	employee_name	salary
+1	Alice	5000
+2	Bob	4000
+3	Charlie	5500
+Write a SQL query to find the employee(s) with the second-highest salary using a subquery.
+Expected Output:
+
+employee_name	salary
+Alice	5000
