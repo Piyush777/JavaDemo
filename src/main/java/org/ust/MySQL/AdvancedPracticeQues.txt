@@ -5,10 +5,10 @@ You have the following table:
 Employees
 
 employee_id	employee_name	department_id	salary
-1	John Doe	101	5000
-2	Jane Smith	102	4500
-3	Robert Brown	101	5500
-4	Emily Davis	102	4700
+1	John Doe	101	           5000
+2	Jane Smith	102	          4500
+3	Robert Brown	101	    5500
+4	Emily Davis	102	         4700
 Write a SQL query to find the names of employees who earn more than the average salary in their department.
 Expected Output:
 
