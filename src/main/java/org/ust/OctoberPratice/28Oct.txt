@@ -1,0 +1,114 @@
+1. Abstract Factory Pattern:
+
+Question: Design a ticket booking system for a transportation company that operates buses and trains. Each mode of transportation has its own specific ticketing process and ticket format. Implement an abstract factory pattern to handle the creation of ticketing systems for both buses and trains.
+
+Instructions:
+
+Define an abstract factory interface TicketFactory with methods for creating Ticket and BookingProcess objects.
+
+Create concrete factory classes BusTicketFactory and TrainTicketFactory that implement the TicketFactory interface to create specific BusTicket and TrainTicket objects and booking processes.
+
+Define abstract product interfaces Ticket and BookingProcess with methods relevant to ticket generation and booking.
+
+Implement concrete product classes (BusTicket, TrainTicket, BusBookingProcess, TrainBookingProcess) with specific details for each transportation mode.
+
+Demonstrate the abstract factory pattern by simulating the ticket booking process for both buses and trains without hardcoding the specific classes in the client code.
+
+2. Prototype Pattern:
+
+Question: Create a game development framework where different types of game characters (e.g., Warrior, Mage) can be cloned. Each character has attributes like health, attack power, and special abilities.
+
+Instructions:
+
+Define an abstract prototype interface GameCharacter with a clone method.
+
+Implement concrete prototype classes Warrior and Mage, each with attributes like health, attack power, and abilities.
+
+Implement the clone method in each class to create a deep copy of the object.
+
+Demonstrate the prototype pattern by creating instances of Warrior and Mage, modifying their attributes, and cloning them to create new character instances with the same attributes.
+
+3. Decorator Pattern:
+
+Question: Implement a notification system that sends notifications via email, SMS, or push notifications. Use the decorator pattern to allow adding additional features such as logging, encryption, and retransmission attempts to the notifications.
+
+Instructions:
+
+Define a component interface Notification with a method send.
+
+Implement concrete component classes EmailNotification, SMSNotification, and PushNotification that implement the send method.
+
+Create decorator classes (LoggingDecorator, EncryptionDecorator, RetryDecorator) that implement the Notification interface and add additional behavior to the send method.
+
+Demonstrate the use of decorators by creating a notification object and wrapping it with various decorators to add features like logging and encryption.
+
+4. Strategy Pattern:
+
+Question: Develop a tax calculation system that supports different tax strategies for different countries (e.g., US, UK, Germany). Use the strategy pattern to switch between different tax calculation strategies at runtime.
+
+Instructions:
+
+Define a strategy interface TaxStrategy with a method calculateTax.
+
+Implement concrete strategy classes for each country (USTaxStrategy, UKTaxStrategy, GermanyTaxStrategy) that provide specific implementations of the tax calculation method.
+
+Create a context class TaxCalculator that uses the TaxStrategy interface to calculate taxes. This class should allow setting the desired tax strategy.
+
+Demonstrate the strategy pattern by creating a TaxCalculator object and calculating taxes using different country-specific tax strategies.
+
+5. Registry Pattern:
+
+Question: Implement a service registry for a microservices architecture where services can be registered and retrieved by name or type. Each service provides functionality that can be accessed by other services in the system.
+
+Instructions:
+
+Define a service interface Service with a method execute.
+
+Create a ServiceRegistry class that maintains a collection of services and provides methods to register, deregister, and retrieve services by name or type.
+
+Implement a few concrete service classes (UserService, PaymentService, NotificationService) that provide specific functionality.
+
+Demonstrate the registry pattern by registering services, retrieving them by name, and executing their functionality.
+
+
+
+6. Reflection and Serialization-Safe Singleton Pattern:**
+
+- *Question:* Implement a thread-safe Singleton class in Java that is immune to both reflection attacks and serialization issues. Your task is to ensure that the Singleton instance cannot be compromised through reflection or by serializing and subsequently deserializing the object. The Singleton class should also handle multithreading properly.
+
+- *Requirements:*
+  1. **Thread Safety:**
+     - The Singleton must be thread-safe, ensuring that multiple threads cannot create multiple instances of the Singleton class.
+
+  2. **Prevent Reflection Attacks:**
+     - Implement a mechanism to prevent instance creation through reflection. This typically involves throwing an exception if the constructor is invoked more than once.
+
+  3. **Serialization Safety:**
+     - Ensure that serialization and deserialization do not lead to multiple instances of the Singleton class. Implement the `Serializable` interface and use the `readResolve` method to maintain the Singleton property.
+
+- *Instructions:*
+  1. **Define the Singleton Class:**
+     - Create a `Singleton` class with a private static instance variable.
+     - The constructor should be private to prevent instantiation from outside the class.
+
+  2. **Implement Thread Safety:**
+     - Use a synchronized method or block to manage instance creation in a thread-safe manner, ensuring only one instance is created even in a multithreaded environment.
+
+  3. **Protect Against Reflection:**
+     - In the private constructor, add logic to throw an exception if an attempt is made to create an instance via reflection when an instance already exists.
+
+  4. **Ensure Serialization Safety:**
+     - Implement the `Serializable` interface.
+     - Override the `readResolve` method to return the existing Singleton instance.
+
+- *Test Case:*
+  1. **Reflection Test:**
+     - Attempt to use reflection to create a new instance of the Singleton class and verify that it throws an exception.
+
+  2. **Serialization Test:**
+     - Serialize the Singleton instance to a file and then deserialize it. Confirm that the deserialized instance is the same as the original instance.
+
+  3. **Multithreading Test:**
+     - Create a test that spawns multiple threads attempting to access the Singleton instance simultaneously, ensuring only one instance is created.
+
+This exercise requires you to address multiple concerns when implementing a robust Singleton pattern, including thread safety, reflection protection, and serialization consistency.
