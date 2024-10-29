@@ -77,3 +77,135 @@ Count the number of employees in each department, including both active and soft
 ### **Part 10: Restore a soft-deleted employee**
 
 Restore the employee with `employee_id = 3` by removing the soft-delete status.
+
+
+
+
+Solutions
+
+
+---
+
+### **Part 1: Create the `employees` table**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    department VARCHAR(50),
+    salary DECIMAL(10, 2),
+    hire_date DATE,
+    soft_delete BOOLEAN DEFAULT FALSE
+);
+```
+
+This query creates the `employees` table with a `soft_delete` column that defaults to `FALSE`, indicating the employee is active.
+
+---
+
+### **Part 2: Insert employee records**
+
+```sql
+INSERT INTO employees (employee_id, first_name, last_name, department, salary, hire_date) VALUES
+(1, 'John', 'Doe', 'IT', 60000.00, '2020-01-15'),
+(2, 'Jane', 'Smith', 'HR', 55000.00, '2018-09-23'),
+(3, 'Alice', 'Johnson', 'IT', 62000.00, '2019-03-01'),
+(4, 'Bob', 'White', 'Marketing', 58000.00, '2021-05-10'),
+(5, 'Charlie', 'Brown', 'IT', 61000.00, '2020-11-12');
+```
+
+This query inserts the provided employee records into the `employees` table.
+
+---
+
+### **Part 3: Select all active employees**
+
+```sql
+SELECT * FROM employees
+WHERE soft_delete = FALSE;
+```
+
+This query selects all employees who are active (not soft-deleted).
+
+---
+
+### **Part 4: Soft-delete an employee**
+
+```sql
+UPDATE employees
+SET soft_delete = TRUE
+WHERE employee_id = 3;
+```
+
+This query updates the `soft_delete` column for the employee with `employee_id = 3`, marking them as soft-deleted.
+
+---
+
+### **Part 5: Select all employees, including soft-deleted ones**
+
+```sql
+SELECT * FROM employees;
+```
+
+This query retrieves all employees, regardless of their `soft_delete` status.
+
+---
+
+### **Part 6: Select active employees ordered by salary**
+
+```sql
+SELECT * FROM employees
+WHERE soft_delete = FALSE
+ORDER BY salary DESC;
+```
+
+This query selects only active employees and orders them by salary in descending order.
+
+---
+
+### **Part 7: Update an employee's salary**
+
+```sql
+UPDATE employees
+SET salary = 65000
+WHERE employee_id = 1;
+```
+
+This query updates the salary of the employee with `employee_id = 1` to 65000.
+
+---
+
+### **Part 8: Count active employees**
+
+```sql
+SELECT COUNT(*) AS active_employee_count
+FROM employees
+WHERE soft_delete = FALSE;
+```
+
+This query counts the number of active (not soft-deleted) employees.
+
+---
+
+### **Part 9: Count employees per department**
+
+```sql
+SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department;
+```
+
+This query counts the total number of employees in each department, including both active and soft-deleted employees.
+
+---
+
+### **Part 10: Restore a soft-deleted employee**
+
+```sql
+UPDATE employees
+SET soft_delete = FALSE
+WHERE employee_id = 3;
+```
+
+This query removes the soft-delete status for the employee with `employee_id = 3`, restoring them as an active employee.
