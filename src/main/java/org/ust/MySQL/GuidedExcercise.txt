@@ -1,0 +1,307 @@
+MySQL Exercise: Basic Constructs, Joins, and Subqueries
+Database Setup
+Create a Database:
+
+CREATE DATABASE CompanyDB;
+USE CompanyDB;
+Create Tables: You’ll need to create three tables for this exercise:
+
+Employees
+Departments
+Projects
+Insert Sample Data:
+
+-- Employees Table
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10, 2),
+    dept_id INT
+);
+
+INSERT INTO Employees VALUES
+(1, 'Alice', 50000, 1),
+(2, 'Bob', 60000, 1),
+(3, 'Charlie', 55000, 2),
+(4, 'David', 70000, 3),
+(5, 'Eve', 65000, 2);
+
+-- Departments Table
+CREATE TABLE Departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
+
+INSERT INTO Departments VALUES
+(1, 'HR'),
+(2, 'Finance'),
+(3, 'IT');
+
+-- Projects Table
+CREATE TABLE Projects (
+    project_id INT PRIMARY KEY,
+    project_name VARCHAR(50),
+    dept_id INT
+);
+
+INSERT INTO Projects VALUES
+(101, 'Project Alpha', 1),
+(102, 'Project Beta', 2),
+(103, 'Project Gamma', 3),
+(104, 'Project Delta', 1);
+Questions
+Section 1: Basic Queries
+Retrieve all records from the Employees table.
+
+SELECT * FROM Employees;
+Expected Output:
+
+emp_id	emp_name	salary	dept_id
+1	Alice	50000	1
+2	Bob	60000	1
+3	Charlie	55000	2
+4	David	70000	3
+5	Eve	65000	2
+List the names of all employees with a salary greater than 55,000.
+
+SELECT emp_name FROM Employees WHERE salary > 55000;
+Expected Output:
+
+emp_name
+Bob
+David
+Eve
+Retrieve the name and department of each employee.
+
+SELECT e.emp_name, d.dept_name
+FROM Employees e
+JOIN Departments d ON e.dept_id = d.dept_id;
+Expected Output:
+
+emp_name	dept_name
+Alice	HR
+Bob	HR
+Charlie	Finance
+David	IT
+Eve	Finance
+Find the total salary of employees in each department.
+
+SELECT d.dept_name, SUM(e.salary) AS total_salary
+FROM Employees e
+JOIN Departments d ON e.dept_id = d.dept_id
+GROUP BY d.dept_name;
+Expected Output:
+
+dept_name	total_salary
+HR	110000
+Finance	120000
+IT	70000
+Retrieve the department name of the employee with the highest salary.
+
+SELECT d.dept_name
+FROM Employees e
+JOIN Departments d ON e.dept_id = d.dept_id
+WHERE e.salary = (SELECT MAX(salary) FROM Employees);
+Expected Output:
+
+dept_name
+IT
+Section 2: Aggregate Functions
+Count the number of employees in each department.
+
+SELECT d.dept_name, COUNT(e.emp_id) AS employee_count
+FROM Employees e
+JOIN Departments d ON e.dept_id = d.dept_id
+GROUP BY d.dept_name;
+Expected Output:
+
+dept_name	employee_count
+HR	2
+Finance	2
+IT	1
+Calculate the average salary of all employees.
+
+SELECT AVG(salary) AS average_salary FROM Employees;
+Expected Output:
+
+average_salary
+60000
+Retrieve the minimum and maximum salaries in the Finance department.
+
+SELECT MIN(salary) AS min_salary, MAX(salary) AS max_salary
+FROM Employees
+WHERE dept_id = 2;
+Expected Output:
+
+min_salary	max_salary
+55000	65000
+Section 3: Subqueries
+Find the names of employees who earn more than the average salary.
+
+SELECT emp_name
+FROM Employees
+WHERE salary > (SELECT AVG(salary) FROM Employees);
+Expected Output:
+
+emp_name
+Bob
+David
+Eve
+List departments that have projects assigned to them.
+
+SELECT dept_name
+FROM Departments
+WHERE dept_id IN (SELECT DISTINCT dept_id FROM Projects);
+Expected Output:
+
+dept_name
+HR
+Finance
+IT
+Section 4: Joins
+Retrieve project names and the names of the departments they belong to.
+
+SELECT p.project_name, d.dept_name
+FROM Projects p
+JOIN Departments d ON p.dept_id = d.dept_id;
+Expected Output:
+
+project_name	dept_name
+Project Alpha	HR
+Project Beta	Finance
+Project Gamma	IT
+Project Delta	HR
+Find all employees who are not in the IT department.
+
+SELECT emp_name
+FROM Employees
+WHERE dept_id != (SELECT dept_id FROM Departments WHERE dept_name = 'IT');
+Expected Output:
+
+emp_name
+Alice
+Bob
+Charlie
+Eve
+Section 5: Nested Subqueries
+Retrieve the name of the department with the most employees.
+
+SELECT dept_name
+FROM Departments
+WHERE dept_id = (
+    SELECT dept_id
+    FROM Employees
+    GROUP BY dept_id
+    ORDER BY COUNT(emp_id) DESC
+    LIMIT 1
+);
+Expected Output:
+
+dept_name
+HR
+List the employees who are in departments with a project.
+
+SELECT e.emp_name
+FROM Employees e
+WHERE e.dept_id IN (SELECT dept_id FROM Projects);
+Expected Output:
+
+emp_name
+Alice
+Bob
+Charlie
+David
+Eve
+Find all departments without any projects assigned.
+
+SELECT dept_name
+FROM Departments
+WHERE dept_id NOT IN (SELECT dept_id FROM Projects);
+Expected Output:
+
+dept_name
+(none, as all departments have projects)
+
+
+Section 6: Advanced Joins and Filtering
+Retrieve the names of employees who are working in the same department as ‘Alice’.
+
+SELECT emp_name
+FROM Employees
+WHERE dept_id = (SELECT dept_id FROM Employees WHERE emp_name = 'Alice')
+AND emp_name != 'Alice';
+Expected Output:
+
+emp_name
+Bob
+List all projects and the names of employees in the department assigned to each project.
+
+SELECT p.project_name, e.emp_name
+FROM Projects p
+JOIN Employees e ON p.dept_id = e.dept_id;
+Expected Output:
+
+project_name	emp_name
+Project Alpha	Alice
+Project Alpha	Bob
+Project Beta	Charlie
+Project Beta	Eve
+Project Gamma	David
+Project Delta	Alice
+Project Delta	Bob
+Find the names of departments with more than one employee.
+
+SELECT d.dept_name
+FROM Departments d
+JOIN Employees e ON d.dept_id = e.dept_id
+GROUP BY d.dept_name
+HAVING COUNT(e.emp_id) > 1;
+Expected Output:
+
+dept_name
+HR
+Finance
+
+
+Section 7: Nested Aggregates and Multi-Level Subqueries
+Retrieve the department(s) with the highest total salary.
+
+SELECT dept_name
+FROM Departments
+WHERE dept_id = (
+    SELECT dept_id
+    FROM Employees
+    GROUP BY dept_id
+    ORDER BY SUM(salary) DESC
+    LIMIT 1
+);
+Expected Output:
+
+dept_name
+Finance
+
+
+List the employees who earn a salary higher than the average salary of their respective department.
+
+SELECT emp_name
+FROM Employees e
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM Employees
+    WHERE dept_id = e.dept_id
+);
+Expected Output:
+
+emp_name
+Bob
+David
+Eve
+Summary of Covered Topics
+This set of exercises covers:
+
+Basic SQL Constructs: Basic retrieval, filtering, and grouping (SELECT, WHERE, GROUP BY, HAVING).
+Joins: Inner joins to combine data across multiple tables.
+Aggregates: SUM, AVG, COUNT, and MIN/MAX functions.
+Subqueries: Simple and correlated subqueries to filter based on complex conditions.
+Nested Aggregates: Using nested aggregate functions for advanced data insights.
+With these questions and solutions, you should be well-prepared to understand core SQL concepts and apply them effectively for complex data retrieval tasks in MySQL!
