@@ -194,7 +194,240 @@ emp_name
 David
 
 
+Solution:
 
+
+### 1. Retrieve Employee Salary Details by Department
+
+```sql
+SELECT e.emp_id, e.emp_name, e.salary, d.dept_name
+FROM Employees e
+JOIN Departments d ON e.dept_id = d.dept_id
+WHERE e.dept_id IN (
+    SELECT dept_id
+    FROM Employees
+    GROUP BY dept_id
+    HAVING COUNT(emp_id) >= 2
+)
+ORDER BY d.dept_name, e.salary DESC;
+```
+
+### 2. Count of Employees by Department with Project
+
+```sql
+SELECT d.dept_name, COUNT(e.emp_id) AS employee_count
+FROM Departments d
+JOIN Projects p ON d.dept_id = p.dept_id
+JOIN Employees e ON e.dept_id = d.dept_id
+GROUP BY d.dept_name;
+```
+
+### 3. Departments with Total Salary Above Average
+
+```sql
+SELECT dept_name
+FROM Departments d
+JOIN Employees e ON d.dept_id = e.dept_id
+GROUP BY d.dept_id
+HAVING SUM(e.salary) > (
+    SELECT AVG(total_salary)
+    FROM (
+        SELECT SUM(salary) AS total_salary
+        FROM Employees
+        GROUP BY dept_id
+    ) AS dept_salaries
+);
+```
+
+### 4. List Projects with Corresponding Department Names
+
+```sql
+SELECT COALESCE(p.project_name, 'No Project') AS project_name, d.dept_name
+FROM Departments d
+LEFT JOIN Projects p ON d.dept_id = p.dept_id;
+```
+
+### 5. Employees Earning More than Department Average
+
+```sql
+SELECT emp_name, salary
+FROM Employees e
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM Employees
+    WHERE dept_id = e.dept_id
+);
+```
+
+### 6. Projects with Total Salary for Each Department
+
+```sql
+SELECT p.project_name, SUM(e.salary) AS total_salary
+FROM Projects p
+JOIN Employees e ON p.dept_id = e.dept_id
+GROUP BY p.project_id;
+```
+
+### 7. List Employees Working in the Department of the Highest Earner
+
+```sql
+SELECT emp_name
+FROM Employees
+WHERE dept_id = (
+    SELECT dept_id
+    FROM Employees
+    ORDER BY salary DESC
+    LIMIT 1
+)
+AND emp_id != (
+    SELECT emp_id
+    FROM Employees
+    ORDER BY salary DESC
+    LIMIT 1
+);
+```
+
+### 8. Find Departments Without Employees
+
+```sql
+SELECT dept_name
+FROM Departments d
+LEFT JOIN Employees e ON d.dept_id = e.dept_id
+WHERE e.emp_id IS NULL;
+```
+
+### 9. List Departments and Total Employees per Project
+
+```sql
+SELECT p.project_name, COUNT(e.emp_id) AS employee_count
+FROM Projects p
+JOIN Employees e ON p.dept_id = e.dept_id
+GROUP BY p.project_id;
+```
+
+### 10. Identify Departments with Only One Employee
+
+```sql
+SELECT dept_name
+FROM Departments d
+JOIN Employees e ON d.dept_id = e.dept_id
+GROUP BY d.dept_id
+HAVING COUNT(e.emp_id) = 1;
+```
+
+### 11. Department(s) with Highest Total Salary
+
+```sql
+SELECT dept_name
+FROM Departments d
+JOIN Employees e ON d.dept_id = e.dept_id
+GROUP BY d.dept_id
+ORDER BY SUM(e.salary) DESC
+LIMIT 1;
+```
+
+### 12. List Employees Earning More Than the Company Average
+
+```sql
+SELECT emp_name
+FROM Employees
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM Employees
+);
+```
+
+### 13. Count of Projects by Department
+
+```sql
+SELECT d.dept_name, COUNT(p.project_id) AS project_count
+FROM Departments d
+LEFT JOIN Projects p ON d.dept_id = p.dept_id
+GROUP BY d.dept_id;
+```
+
+### 14. Find Employees Not Assigned to Any Department Projects
+
+```sql
+SELECT emp_name
+FROM Employees e
+WHERE dept_id NOT IN (SELECT dept_id FROM Projects);
+```
+
+### 15. Retrieve Departments with Employee Count Greater than Two
+
+```sql
+SELECT dept_name
+FROM Departments d
+JOIN Employees e ON d.dept_id = e.dept_id
+GROUP BY d.dept_id
+HAVING COUNT(e.emp_id) > 2;
+```
+
+### 16. Projects with Highest Salary Employees
+
+```sql
+SELECT project_name
+FROM Projects p
+WHERE dept_id = (
+    SELECT dept_id
+    FROM Employees
+    ORDER BY salary DESC
+    LIMIT 1
+);
+```
+
+### 17. Retrieve Employees with Highest Salary by Department
+
+```sql
+SELECT d.dept_name, e.emp_name, e.salary
+FROM Employees e
+JOIN Departments d ON e.dept_id = d.dept_id
+WHERE (e.dept_id, e.salary) IN (
+    SELECT dept_id, MAX(salary)
+    FROM Employees
+    GROUP BY dept_id
+);
+```
+
+### 18. Departments with Projects Not Assigned to All Employees
+
+```sql
+SELECT dept_name
+FROM Departments d
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Employees e
+    WHERE e.dept_id = d.dept_id
+    AND e.emp_id NOT IN (
+        SELECT e2.emp_id
+        FROM Projects p
+        JOIN Employees e2 ON p.dept_id = e2.dept_id
+        WHERE e2.dept_id = d.dept_id
+    )
+);
+```
+
+### 19. Average Salary of Each Project’s Department
+
+```sql
+SELECT p.project_name, AVG(e.salary) AS avg_salary
+FROM Projects p
+JOIN Employees e ON p.dept_id = e.dept_id
+GROUP BY p.project_id;
+```
+
+### 20. Retrieve Employees Who Earn More than 90% of Their Department's Total Salary
+
+```sql
+SELECT emp_name
+FROM Employees e
+WHERE salary > 0.9 * (
+    SELECT SUM(salary)
+    FROM Employees
+    WHERE dept_id = e.dept_id
+);
+```
 
 
 

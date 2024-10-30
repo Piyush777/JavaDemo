@@ -2,6 +2,7 @@ package org.ust.CreationDesignPattern.Singleton;
 
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 class SingletonReflectionS {
     // Single instance of the Singleton class
@@ -53,9 +54,17 @@ public class ReflectionSafeSingleton {
             SingletonReflectionS instance2 = constructor.newInstance();
             System.out.println("Reflection succeeded, new instance created!");
 
-        } catch (Exception e) {
+        } catch (RuntimeException e ) {
             // Catch and print any exceptions that occur (in this case, RuntimeException from the Singleton)
             System.out.println("Reflection failed: " + e.getMessage());
+        }catch (NoSuchMethodException e){
+            System.out.println("No Such Method Exception : " + e.getMessage());
+        }catch (InstantiationException instantiationException){
+            System.out.println("Instantiation Exception: "+ instantiationException.getMessage());
+        }catch (IllegalAccessException illegalAccessException){
+            System.out.println("Illegal Access Exception "+ illegalAccessException.getMessage());
+        }catch (InvocationTargetException invocationTargetException){
+            System.out.println("Invocation Target Exception "+ invocationTargetException.getCause().getMessage());
         }
 
         // Check if both instances are the same
