@@ -26,7 +26,9 @@ Questions
 Basic Queries and Aggregates
 Retrieve Employee Salary Details by Department
 
-Retrieve the emp_id, emp_name, salary, and dept_name for all employees. Include only those departments that have at least two employees. Sort the results by dept_name and then by salary in descending order.
+Retrieve the emp_id, emp_name, salary, and dept_name for all employees. Include only those
+departments that have at least two employees.
+Sort the results by dept_name and then by salary in descending order.
 Expected Output:
 
 emp_id	emp_name	salary	dept_name
@@ -36,7 +38,8 @@ emp_id	emp_name	salary	dept_name
 3	Charlie	55000	Finance
 Count of Employees by Department with Project
 
-Find the count of employees (employee_count) in each department with a project assigned. List only departments with at least one project.
+Find the count of employees (employee_count) in each department
+with a project assigned. List only departments with at least one project.
 Expected Output:
 
 dept_name	employee_count
@@ -45,7 +48,8 @@ Finance	2
 IT	1
 Departments with Total Salary Above Average
 
-Retrieve dept_name for departments where the total salary paid to employees is higher than the average total salary across all departments.
+Retrieve dept_name for departments where the total salary paid
+ to employees is higher than the average total salary across all departments.
 Expected Output:
 
 dept_name
@@ -209,7 +213,7 @@ WHERE e.dept_id IN (
     GROUP BY dept_id
     HAVING COUNT(emp_id) >= 2
 )
-ORDER BY d.dept_name, e.salary DESC;
+ORDER BY d.dept_name DESC, e.salary DESC;
 ```
 
 ### 2. Count of Employees by Department with Project
