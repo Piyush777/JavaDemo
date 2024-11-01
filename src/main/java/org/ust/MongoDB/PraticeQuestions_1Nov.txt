@@ -1,0 +1,103 @@
+
+
+### Sample Data in the `students` Collection
+
+```json
+[
+    { "_id": 1, "name": "Alice", "age": 20, "grade": "A", "subjects": ["Math", "English"] },
+    { "_id": 2, "name": "Bob", "age": 22, "grade": "B", "subjects": ["Math", "History"] },
+    { "_id": 3, "name": "Charlie", "age": 21, "grade": "A", "subjects": ["Science", "Math"] },
+    { "_id": 4, "name": "David", "age": 23, "grade": "C", "subjects": ["History", "English"] },
+    { "_id": 5, "name": "Eva", "age": 20, "grade": "B", "subjects": ["Science", "Math"] }
+]
+```
+
+---
+
+### 1. **Basic Document Retrieval**
+
+   **Question**: Retrieve all documents in the `students` collection.
+
+   **Expected Output**:
+   - This query will display all documents in the `students` collection, showing each student’s `_id`, `name`, `age`, `grade`, and `subjects`.
+
+   ```json
+   [
+       { "_id": 1, "name": "Alice", "age": 20, "grade": "A", "subjects": ["Math", "English"] },
+       { "_id": 2, "name": "Bob", "age": 22, "grade": "B", "subjects": ["Math", "History"] },
+       { "_id": 3, "name": "Charlie", "age": 21, "grade": "A", "subjects": ["Science", "Math"] },
+       { "_id": 4, "name": "David", "age": 23, "grade": "C", "subjects": ["History", "English"] },
+       { "_id": 5, "name": "Eva", "age": 20, "grade": "B", "subjects": ["Science", "Math"] }
+   ]
+   ```
+
+---
+
+### 2. **Filter Documents with a Condition**
+
+   **Question**: Retrieve documents where the student has a grade of "A".
+
+   **Expected Output**:
+   - Only students with a grade of "A" will be returned.
+
+   ```json
+   [
+       { "_id": 1, "name": "Alice", "age": 20, "grade": "A", "subjects": ["Math", "English"] },
+       { "_id": 3, "name": "Charlie", "age": 21, "grade": "A", "subjects": ["Science", "Math"] }
+   ]
+   ```
+
+---
+
+### 3. **Project Specific Fields**
+
+   **Question**: Retrieve the `name` and `age` of all students, excluding other fields.
+
+   **Expected Output**:
+   - This will show only the `name` and `age` fields for each student.
+
+   ```json
+   [
+       { "name": "Alice", "age": 20 },
+       { "name": "Bob", "age": 22 },
+       { "name": "Charlie", "age": 21 },
+       { "name": "David", "age": 23 },
+       { "name": "Eva", "age": 20 }
+   ]
+   ```
+
+---
+
+### 4. **Filter with Multiple Conditions**
+
+   **Question**: Retrieve all students who are 20 years old and have a grade of "B".
+
+   **Expected Output**:
+   - Only students who meet both conditions (age 20 and grade "B") will be returned.
+
+   ```json
+   [
+       { "_id": 5, "name": "Eva", "age": 20, "grade": "B", "subjects": ["Science", "Math"] }
+   ]
+   ```
+
+---
+
+### 5. **Filter Documents with Array Values**
+
+   **Question**: Retrieve all students who are studying "Math" as one of their subjects.
+
+   **Expected Output**:
+   - All students with "Math" in their `subjects` array will be returned.
+
+   ```json
+   [
+       { "_id": 1, "name": "Alice", "age": 20, "grade": "A", "subjects": ["Math", "English"] },
+       { "_id": 2, "name": "Bob", "age": 22, "grade": "B", "subjects": ["Math", "History"] },
+       { "_id": 3, "name": "Charlie", "age": 21, "grade": "A", "subjects": ["Science", "Math"] },
+       { "_id": 5, "name": "Eva", "age": 20, "grade": "B", "subjects": ["Science", "Math"] }
+   ]
+   ```
+
+---
+
