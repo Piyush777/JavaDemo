@@ -58,3 +58,14 @@ Where account_id=1;
 
 
 
+
+
+
+Schema Validator OC:
+https://onecompiler.com/mongodb/42wt8xpwd
+
+Indexes OC:
+
+https://onecompiler.com/mongodb/42wtbvnvn
+
+
