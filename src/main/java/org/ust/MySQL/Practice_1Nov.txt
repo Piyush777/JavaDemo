@@ -1,0 +1,133 @@
+
+
+Table: employees
++----+----------+-----------+--------+------------+-----------+
+| id | name     | position  | salary | department | hire_date |
++----+----------+-----------+--------+------------+-----------+
+| 1  | Alice    | Engineer  | 60000  | IT         | 2021-01-15|
+| 2  | Bob      | Manager   | 75000  | HR         | 2019-06-01|
+| 3  | Charlie  | Engineer  | 52000  | IT         | 2020-03-22|
+| 4  | David    | Analyst   | 48000  | Finance    | 2022-07-30|
+| 5  | Eva      | Engineer  | 67000  | IT         | 2021-11-11|
+| 6  | Frank    | Manager   | 80000  | Finance    | 2018-12-20|
+| 7  | Grace    | Analyst   | 45000  | HR         | 2022-05-17|
+| 8  | Hank     | Engineer  | 55000  | IT         | 2019-10-05|
++----+----------+-----------+--------+------------+-----------+
+
+Table: departments
++----+------------+-------------+
+| id | name       | location    |
++----+------------+-------------+
+| 1  | IT         | Building A  |
+| 2  | HR         | Building B  |
+| 3  | Finance    | Building C  |
++----+------------+-------------+
+
+
+1. Simple SELECT Query
+Question: Retrieve all columns for every employee in the employees table.
+
+Expected Output:
+
+The output will display all details for each employee, including columns like id, name, position, salary, department, and hire_date.
+Sample Output:
+
++----+----------+-----------+--------+------------+-----------+
+| id | name     | position  | salary | department | hire_date |
++----+----------+-----------+--------+------------+-----------+
+| 1  | Alice    | Engineer  | 60000  | IT         | 2021-01-15|
+| 2  | Bob      | Manager   | 75000  | HR         | 2019-06-01|
+| 3  | Charlie  | Engineer  | 52000  | IT         | 2020-03-22|
+| 4  | David    | Analyst   | 48000  | Finance    | 2022-07-30|
+| 5  | Eva      | Engineer  | 67000  | IT         | 2021-11-11|
+| 6  | Frank    | Manager   | 80000  | Finance    | 2018-12-20|
+| 7  | Grace    | Analyst   | 45000  | HR         | 2022-05-17|
+| 8  | Hank     | Engineer  | 55000  | IT         | 2019-10-05|
++----+----------+-----------+--------+------------+-----------+
+
+2. Filtering Data with WHERE Clause
+Question: Display the id, name, and position of employees who have a salary greater than 50000.
+
+Expected Output:
+
+A list showing only the id, name, and position of employees with a salary above 50000.
+Sample Output:
+
++----+----------+-----------+
+| id | name     | position  |
++----+----------+-----------+
+| 1  | Alice    | Engineer  |
+| 2  | Bob      | Manager   |
+| 3  | Charlie  | Engineer  |
+| 5  | Eva      | Engineer  |
+| 6  | Frank    | Manager   |
+| 8  | Hank     | Engineer  |
++----+----------+-----------+
+3. Sorting Data with ORDER BY
+Question: Retrieve the id, name, and position of employees with a salary greater than 50000 and sort the results in descending order based on salary.
+
+Expected Output:
+
+The same filtered list of id, name, and position from the previous question, sorted by salary in descending order with the highest salary listed first.
+Sample Output:
+
++----+----------+-----------+
+| id | name     | position  |
++----+----------+-----------+
+| 6  | Frank    | Manager   |
+| 5  | Eva      | Engineer  |
+| 2  | Bob      | Manager   |
+| 1  | Alice    | Engineer  |
+| 8  | Hank     | Engineer  |
+| 3  | Charlie  | Engineer  |
++----+----------+-----------+
+4. Aggregating Data with GROUP BY
+Question: Calculate the average salary for each position in the employees table and display only those positions where the average salary is above 50000.
+
+Expected Output:
+
+A list showing each position and its average salary, with only positions where the average salary is greater than 50000.
+Sample Output:
+
++-----------+------------+
+| position  | avg_salary |
++-----------+------------+
+| Engineer  | 58500.00   |
+| Manager   | 77500.00   |
++-----------+------------+
+5. Using COUNT with GROUP BY and ORDER BY
+Question: Find the number of employees in each department and sort the results in descending order based on the number of employees.
+
+Expected Output:
+
+A list showing each department and the count of employees, sorted by employee count in descending order.
+Sample Output:
+
++------------+---------------+
+| department | employee_count|
++------------+---------------+
+| IT         | 4             |
+| HR         | 2             |
+| Finance    | 2             |
++------------+---------------+
+
+6. Using JOIN to Combine Tables
+Question: Write a query to retrieve the name of each employee, their position, salary, and the location of their department.
+
+Expected Output:
+
+A list showing each employee's name, position, salary, and the location of the department they belong to.
+Sample Output:
+
++----------+-----------+--------+-------------+
+| name     | position  | salary | location    |
++----------+-----------+--------+-------------+
+| Alice    | Engineer  | 60000  | Building A  |
+| Bob      | Manager   | 75000  | Building B  |
+| Charlie  | Engineer  | 52000  | Building A  |
+| David    | Analyst   | 48000  | Building C  |
+| Eva      | Engineer  | 67000  | Building A  |
+| Frank    | Manager   | 80000  | Building C  |
+| Grace    | Analyst   | 45000  | Building B  |
+| Hank     | Engineer  | 55000  | Building A  |
++----------+-----------+--------+-------------+
