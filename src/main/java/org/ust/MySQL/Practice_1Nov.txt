@@ -131,3 +131,103 @@ Sample Output:
 | Grace    | Analyst   | 45000  | Building B  |
 | Hank     | Engineer  | 55000  | Building A  |
 +----------+-----------+--------+-------------+
+
+
+Solutions:
+
+
+
+### 1. **Simple SELECT Query**
+
+   **Question**: Retrieve all columns for every employee in the `employees` table.
+
+   **Query**:
+   ```sql
+   SELECT * FROM employees;
+   ```
+
+   **Explanation**:
+   - This query selects all columns for each employee in the `employees` table.
+
+---
+
+### 2. **Filtering Data with WHERE Clause**
+
+   **Question**: Display the `id`, `name`, and `position` of employees who have a salary greater than 50000.
+
+   **Query**:
+   ```sql
+   SELECT id, name, position
+   FROM employees
+   WHERE salary > 50000;
+   ```
+
+   **Explanation**:
+   - This query filters the `employees` table to show only the `id`, `name`, and `position` columns for employees with a salary greater than 50000.
+
+---
+
+### 3. **Sorting Data with ORDER BY**
+
+   **Question**: Retrieve the `id`, `name`, and `position` of employees with a salary greater than 50000 and sort the results in descending order based on salary.
+
+   **Query**:
+   ```sql
+   SELECT id, name, position
+   FROM employees
+   WHERE salary > 50000
+   ORDER BY salary DESC;
+   ```
+
+   **Explanation**:
+   - This query filters employees with a salary greater than 50000 and sorts them in descending order of salary.
+
+---
+
+### 4. **Aggregating Data with GROUP BY**
+
+   **Question**: Calculate the average salary for each position in the `employees` table and display only those positions where the average salary is above 50000.
+
+   **Query**:
+   ```sql
+   SELECT position, AVG(salary) AS avg_salary
+   FROM employees
+   GROUP BY position
+   HAVING AVG(salary) > 50000;
+   ```
+
+   **Explanation**:
+   - This query groups employees by `position`, calculates the average salary for each position, and filters to show only positions where the average salary is above 50000.
+
+---
+
+### 5. **Using COUNT with GROUP BY and ORDER BY**
+
+   **Question**: Find the number of employees in each department and sort the results in descending order based on the number of employees.
+
+   **Query**:
+   ```sql
+   SELECT department, COUNT(*) AS employee_count
+   FROM employees
+   GROUP BY department
+   ORDER BY employee_count DESC;
+   ```
+
+   **Explanation**:
+   - This query groups employees by `department`, counts the number of employees in each department, and sorts the results in descending order of employee count.
+
+---
+
+### 6. **Using JOIN to Combine Tables**
+
+   **Question**: Write a query to retrieve the name of each employee, their position, salary, and the location of their department.
+
+   **Query**:
+   ```sql
+   SELECT e.name, e.position, e.salary, d.location
+   FROM employees e
+   JOIN departments d ON e.department = d.name;
+   ```
+
+   **Explanation**:
+   - This query joins the `employees` and `departments` tables on the department name, allowing it to retrieve each employee’s `name`, `position`, `salary`, and the department's `location`.

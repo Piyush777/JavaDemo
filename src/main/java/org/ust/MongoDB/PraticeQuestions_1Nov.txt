@@ -101,3 +101,116 @@
 
 ---
 
+
+Solutions:
+
+
+
+### 1. **Basic Document Retrieval**
+
+   **Query**:
+   ```javascript
+   db.students.find({})
+   ```
+
+   **Explanation**:
+   - This query retrieves all documents in the `students` collection without any filters.
+
+   **Expected Output**:
+   ```json
+   [
+       { "_id": 1, "name": "Alice", "age": 20, "grade": "A", "subjects": ["Math", "English"] },
+       { "_id": 2, "name": "Bob", "age": 22, "grade": "B", "subjects": ["Math", "History"] },
+       { "_id": 3, "name": "Charlie", "age": 21, "grade": "A", "subjects": ["Science", "Math"] },
+       { "_id": 4, "name": "David", "age": 23, "grade": "C", "subjects": ["History", "English"] },
+       { "_id": 5, "name": "Eva", "age": 20, "grade": "B", "subjects": ["Science", "Math"] }
+   ]
+   ```
+
+---
+
+### 2. **Filter Documents with a Condition**
+
+   **Query**:
+   ```javascript
+   db.students.find({ grade: "A" })
+   ```
+
+   **Explanation**:
+   - This query filters documents to return only those where the `grade` is "A".
+
+   **Expected Output**:
+   ```json
+   [
+       { "_id": 1, "name": "Alice", "age": 20, "grade": "A", "subjects": ["Math", "English"] },
+       { "_id": 3, "name": "Charlie", "age": 21, "grade": "A", "subjects": ["Science", "Math"] }
+   ]
+   ```
+
+---
+
+### 3. **Project Specific Fields**
+
+   **Query**:
+   ```javascript
+   db.students.find({}, { name: 1, age: 1, _id: 0 })
+   ```
+
+   **Explanation**:
+   - This query retrieves only the `name` and `age` fields for each document, excluding the `_id` field by setting `_id: 0`.
+
+   **Expected Output**:
+   ```json
+   [
+       { "name": "Alice", "age": 20 },
+       { "name": "Bob", "age": 22 },
+       { "name": "Charlie", "age": 21 },
+       { "name": "David", "age": 23 },
+       { "name": "Eva", "age": 20 }
+   ]
+   ```
+
+---
+
+### 4. **Filter with Multiple Conditions**
+
+   **Query**:
+   ```javascript
+   db.students.find({ age: 20, grade: "B" })
+   ```
+
+   **Explanation**:
+   - This query uses both `age` and `grade` as conditions to retrieve documents where `age` is 20 and `grade` is "B".
+
+   **Expected Output**:
+   ```json
+   [
+       { "_id": 5, "name": "Eva", "age": 20, "grade": "B", "subjects": ["Science", "Math"] }
+   ]
+   ```
+
+---
+
+### 5. **Filter Documents with Array Values**
+
+   **Query**:
+   ```javascript
+   db.students.find({ subjects: "Math" })
+   ```
+
+   **Explanation**:
+   - This query retrieves documents where the `subjects` array contains the value "Math".
+
+   **Expected Output**:
+   ```json
+   [
+       { "_id": 1, "name": "Alice", "age": 20, "grade": "A", "subjects": ["Math", "English"] },
+       { "_id": 2, "name": "Bob", "age": 22, "grade": "B", "subjects": ["Math", "History"] },
+       { "_id": 3, "name": "Charlie", "age": 21, "grade": "A", "subjects": ["Science", "Math"] },
+       { "_id": 5, "name": "Eva", "age": 20, "grade": "B", "subjects": ["Science", "Math"] }
+   ]
+   ```
+
+---
+
+
