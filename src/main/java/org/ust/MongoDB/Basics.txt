@@ -69,3 +69,10 @@ Indexes OC:
 https://onecompiler.com/mongodb/42wtbvnvn
 
 
+Aggregators:
+https://onecompiler.com/mongodb/42x456898
+
+Operators:
+https://onecompiler.com/mongodb/42x44kan8
+
+
