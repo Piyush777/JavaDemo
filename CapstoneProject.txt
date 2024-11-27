@@ -1,0 +1,137 @@
+**Problem Statement: Comprehensive E-commerce Platform Backend Using Spring Boot**
+
+**Overview:**
+
+Develop a robust and scalable backend system for an e-commerce platform using Spring Boot. This system will encompass core functionalities such as user management, product catalog, inventory management, order processing, payment processing, and shipping management. The backend will not include a UI; all interactions will be tested via integration tests and Postman. The emphasis will be on security, data integrity, and scalability.
+
+**Services and Requirements:**
+
+1. **User Management Service:**
+
+   - **Functionality:**
+     - Manage user accounts with registration, authentication, and profile management.
+     - Support different user roles (e.g., customer, admin) with role-based access control.
+
+   - **Database:**
+     - Use a relational database (e.g., PostgreSQL) to store user data.
+     - Implement user table with fields: `id`, `username`, `password (hashed)`, `email`, `role`, `created_at`, `updated_at`.
+
+   - **Validation:**
+     - Ensure email uniqueness and valid email format.
+     - Passwords must meet complexity requirements.
+
+   - **Logging:**
+     - Log user registration and login attempts with timestamps and IP addresses.
+
+   - **APIs:**
+     - `POST /api/users/register`: Register a new user.
+     - `POST /api/users/login`: Authenticate a user and generate a JWT token.
+     - `GET /api/users/{id}`: Retrieve user details (admin access).
+     - `PUT /api/users/{id}`: Update user profile (authenticated users).
+
+2. **Product Catalog Service:**
+
+   - **Functionality:**
+     - Manage product listings, including details, categories, and pricing.
+     - Enable search and filter capabilities.
+
+   - **Database:**
+     - Use a relational database for product data storage.
+     - Tables: `products`, `categories`, with relations.
+
+   - **Validation:**
+     - Ensure unique product identifiers and valid price formats.
+
+   - **Logging:**
+     - Log all product additions, updates, and deletions with user information.
+
+   - **APIs:**
+     - `POST /api/products`: Add a new product (admin access).
+     - `GET /api/products`: Retrieve products with optional filters.
+     - `GET /api/products/{id}`: Retrieve product details.
+     - `PUT /api/products/{id}`: Update a product (admin access).
+     - `DELETE /api/products/{id}`: Remove a product (admin access).
+
+3. **Inventory Management Service:**
+
+   - **Functionality:**
+     - Track and manage stock levels for products.
+     - Support stock adjustments for incoming shipments and sales.
+
+   - **Database:**
+     - Inventory data integrated within the product schema.
+
+   - **Validation:**
+     - Prevent negative inventory levels.
+
+   - **Logging:**
+     - Log inventory changes with timestamp and user who made the change.
+
+   - **APIs:**
+     - `GET /api/inventory/{productId}`: Check stock level.
+     - `POST /api/inventory/{productId}`: Update stock level (admin access).
+
+4. **Order Processing Service:**
+
+   - **Functionality:**
+     - Handle full order lifecycle from creation to fulfillment.
+     - Validate orders against inventory availability.
+
+   - **Database:**
+     - Use a relational database to store order information with relations to user and product data.
+
+   - **Validation:**
+     - Ensure order integrity by validating stock availability before confirmation.
+
+   - **Logging:**
+     - Detailed logging of order creation, status changes, and related actions.
+
+   - **APIs:**
+     - `POST /api/orders`: Create a new order (authenticated users).
+     - `GET /api/orders/{id}`: Retrieve order details.
+     - `PUT /api/orders/{id}/status`: Update order status (admin access).
+     - `GET /api/orders/user/{userId}`: Retrieve user order history.
+
+5. **Payment Processing Service:**
+
+   - **Functionality:**
+     - Interface with payment gateways for transaction processing.
+     - Handle payment confirmation and error recovery.
+
+   - **Validation:**
+     - Secure transactions using SSL/TLS and ensure data integrity.
+
+   - **Logging:**
+     - Log all payment transactions with status and error details if applicable.
+
+   - **APIs:**
+     - `POST /api/payments/process`: Process a payment.
+     - `GET /api/payments/status/{orderId}`: Retrieve payment status.
+
+6. **Shipping Management Service:**
+
+   - **Functionality:**
+     - Manage shipment creation and tracking.
+     - Integrate with third-party shipping carriers for real-time tracking.
+
+   - **Database:**
+     - Store shipping details linked to orders.
+
+   - **Logging:**
+     - Log all shipping updates and interactions with carriers.
+
+   - **APIs:**
+     - `POST /api/shipping/create`: Create a shipment.
+     - `GET /api/shipping/track/{orderId}`: Track shipment status.
+     - `PUT /api/shipping/update/{orderId}`: Update shipping details.
+
+**Testing and Validation:**
+
+- Implement comprehensive integration testing for all services using established frameworks.
+- Validate all API endpoints and business logic using Postman collections and automated scripts.
+
+**Constraints:**
+
+- Ensure high availability and performance under concurrent loads.
+- Implement robust security measures, including encryption and secure authentication.
+- Design for scalability to accommodate future growth and feature expansion.
