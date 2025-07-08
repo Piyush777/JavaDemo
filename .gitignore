@@ -36,3 +36,22 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+## ignore file.txt ##
+file.txt
+
+## ignore node modules directory ##
+node_modules/
+
+## ignore .log files ##
+*.log
+
+## ignore a specific file in a directory ##
+directory/file.txt
+
+## ignore build directories ##
+target/
+
+## ignore all environment files ##
+.env
+
