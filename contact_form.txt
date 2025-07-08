@@ -1,1 +1,1 @@
-This is my Person's contact details form . Please make sure all details are correct.
+This is my Person's User's contact details form . Please make sure all details are correct.
